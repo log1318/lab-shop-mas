@@ -56,9 +56,10 @@ public class Order  {
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
         labshopmsa.external.DecreaseStockCommand decreaseStockCommand = new labshopmsa.external.DecreaseStockCommand();
+        decreaseStockCommand.setQty(getQty()); //here
         // mappings goes here
         MonolithApplication.applicationContext.getBean(labshopmsa.external.InventoryService.class)
-            .decreaseStock(/* get???(), */ decreaseStockCommand);
+            .decreaseStock((Long.valueOf(getProductId())), decreaseStockCommand); //here
 
 
 
